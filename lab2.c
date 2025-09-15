@@ -10,13 +10,13 @@ typedef struct {
 int dist(Point a, Point b) {
     int dx = a.x - b.x;
     int dy = a.y - b.y;
-    return dx * dx + dy * dy; // без извлечения корня
+    return dx * dx + dy * dy;
 }
 
 // Пузырьковая сортировка
 void bubbleSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
+        for (int j = 0; j < n - i - 1; j++) { // последние элементы (кол-во i) уже отсортированы
             if (arr[j] > arr[j + 1]) {
                 int tmp = arr[j];
                 arr[j] = arr[j + 1];
