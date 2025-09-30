@@ -9,7 +9,6 @@ print("2: f(x) = e^x")
 print("3: f(x) = x^2")
 choice = int(input("Ваш выбор (1/2/3): "))
 
-# Выбор функции
 if choice == 1:
     f = math.sinh(x)
     print("\nВыбрана функция: f(x) = sh(x)")
@@ -19,10 +18,7 @@ elif choice == 2:
 elif choice == 3:
     f = x**2
     print("\nВыбрана функция: f(x) = x^2")
-else:
-    raise ValueError("Некорректный выбор функции")
 
-# Вычисление по кусочной функции
 if y == 0:
     e = 0
     print("Случай: y = 0")
@@ -35,8 +31,5 @@ elif (x / y) > 0:
 elif (x / y) < 0:
     e = math.log(abs(f / y)) + (f + y)**3
     print("Случай: x/y < 0")
-else:
-    e = None
-    print("Неопределённый случай")
 
 print(f"Результат e = {e}")
