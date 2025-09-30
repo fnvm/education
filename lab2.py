@@ -4,32 +4,39 @@ x = float(input("Введите x: "))
 y = float(input("Введите y: "))
 
 print("Выберите функцию f(x):")
-print("1: f(x) = cos(y)")
-print("2: f(x) = e^(cos(x))")
-print("3: f(x) = log10(x)")
+print("1: f(x) = sh(x)")
+print("2: f(x) = e^x")
+print("3: f(x) = x^2")
 choice = int(input("Ваш выбор (1/2/3): "))
 
+# Выбор функции
 if choice == 1:
-    f = math.cos(y)
-    print(f"\nВыбрана функция: f(x) = cos(y)")
+    f = math.sinh(x)
+    print("\nВыбрана функция: f(x) = sh(x)")
 elif choice == 2:
-    f = math.e ** math.cos(x)
-    print(f"\nВыбрана функция: f(x) = e^(cos(x))")
+    f = math.exp(x)
+    print("\nВыбрана функция: f(x) = e^x")
 elif choice == 3:
-    f = math.log10(x) if x > 0 else float('nan')
-    print(f"\nВыбрана функция: f(x) = lg10(x)")
+    f = x**2
+    print("\nВыбрана функция: f(x) = x^2")
 else:
     raise ValueError("Некорректный выбор функции")
 
-if f > 0:
-    d = (x**2 + f**2) / y
-    print("D(f): f(x) > 0")
-elif f < 0:
-    d = math.log(abs(f**3)) + math.cos(f)
-    print("D(f): f(x) < 0")
+# Вычисление по кусочной функции
+if y == 0:
+    e = 0
+    print("Случай: y = 0")
+elif x == 0:
+    e = (f**2 + y)**3
+    print("Случай: x = 0")
+elif (x / y) > 0:
+    e = math.log(f) + (f**2 + y)**3
+    print("Случай: x/y > 0")
+elif (x / y) < 0:
+    e = math.log(abs(f / y)) + (f + y)**3
+    print("Случай: x/y < 0")
 else:
-    d = (math.sin(x)**2) ** (1/3)
-    print("D(f): f(x) = 0")
+    e = None
+    print("Неопределённый случай")
 
-
-print(f"Результат d = {d}")
+print(f"Результат e = {e}")
